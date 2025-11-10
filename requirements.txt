@@ -16,3 +16,4 @@ werkzeug
 gunicorn
 gspread
 google-auth
+blis==0.7.9
