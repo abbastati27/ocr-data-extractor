@@ -6,7 +6,7 @@ st.title("📂 Bulk Document Entity Extractor")
 st.write("Upload multiple documents (PDF, DOCX, PNG, JPG) and extract key fields automatically into Google Sheets.")
 
 uploaded_files = st.file_uploader("Choose files", type=["pdf", "docx", "png", "jpg", "jpeg"], accept_multiple_files=True)
-API_URL = "https://ocr-data-extractor.onrender.com/extract"
+API_URL = "https://n8n.srv1028016.hstgr.cloud/webhook-test/fe263796-2e1e-4918-a227-fe7a667d1224"
 
 if uploaded_files:
     st.info(f"{len(uploaded_files)} file(s) selected.")
