@@ -1,7 +1,7 @@
 import os
 import tempfile
 import pytesseract
-import spacy
+# import spacy
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from PyPDF2 import PdfReader
@@ -23,7 +23,7 @@ if not OPENAI_API_KEY:
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
 
 app = Flask(__name__)
 
