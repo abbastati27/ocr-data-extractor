@@ -1,0 +1,17 @@
+Flask
+requests
+pytesseract
+spacy
+PyPDF2
+pdf2image
+Pillow
+python-docx
+langchain
+langchain-core
+langchain-community
+langchain-openai
+streamlit
+werkzeug
+gunicorn
+gspread
+google-auth
