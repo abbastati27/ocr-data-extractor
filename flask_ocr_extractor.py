@@ -28,11 +28,24 @@ nlp = spacy.load("en_core_web_sm")
 app = Flask(__name__)
 
 # ------------------------- Google Sheets Setup -------------------------
-SERVICE_ACCOUNT_FILE = "ocr-data-extractor-b941e8d4a2af.json"   # your JSON key filename
+# SERVICE_ACCOUNT_FILE = "ocr-data-extractor-b941e8d4a2af.json"   # your JSON key filename
 SPREADSHEET_NAME = "Entities"           # your Google Sheet name
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+cred_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+
+if cred_json:
+    # Convert the JSON string from environment to a temp file
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".json") as temp_json:
+        temp_json.write(cred_json.encode())
+        temp_json.flush()
+        creds = Credentials.from_service_account_file(temp_json.name, scopes=SCOPES)
+else:
+    # Fallback for local dev (if you still have the file locally)
+    SERVICE_ACCOUNT_FILE = "ocr-data-extractor-b941e8d4a2af.json"
+    creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+# Authorize gspread
 client = gspread.authorize(creds)
 
 try:

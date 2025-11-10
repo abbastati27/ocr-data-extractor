@@ -2,6 +2,7 @@ Flask
 requests
 pytesseract
 spacy
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
 PyPDF2
 pdf2image
 Pillow
